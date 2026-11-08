@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matheus Barbosa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Matheus Barbosa — Software Engineer at Microsoft working on Azure Arc. Based in Seattle, WA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html{color-scheme:light} body{margin:0} img{max-width:100%} [hidden]{display:none!important}
+/* Layout: two columns on desktop — sticky identity rail on the left, scrolling record on the right; single column on phones. */
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --fg: #141a22;
+  --muted: #5a6573;
+  --line: #dde3eb;
+  --accent: #0f5bb5;
+  --accent-soft: #e3edf9;
+  --display: "Bricolage Grotesque", "Hanken Grotesk", system-ui, sans-serif;
+  --body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1319; --surface: #151c25; --fg: #e6ebf1; --muted: #93a0b0;
+    --line: #253140; --accent: #6aa8f0; --accent-soft: #17283c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1319; --surface: #151c25; --fg: #e6ebf1; --muted: #93a0b0;
+  --line: #253140; --accent: #6aa8f0; --accent-soft: #17283c; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 56px 72px;
+  display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 64px;
+}
+
+/* Identity rail */
+.rail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 40px); align-self: start; display: grid; gap: 28px; }
+.name { font-family: var(--display); font-weight: 700; font-size: 2.6rem; line-height: 1.02; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+.role { margin: 10px 0 0; font-size: 1.05rem; color: var(--muted); }
+.role strong { color: var(--fg); font-weight: 600; }
+.loc { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); letter-spacing: 0.02em; margin-top: 8px; }
+.contact { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.contact li { display: grid; grid-template-columns: 76px 1fr; gap: 8px; align-items: baseline; font-size: 0.95rem; }
+.contact .k { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.contact .v { min-width: 0; overflow-wrap: anywhere; }
+.copy { font: inherit; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; margin-left: 6px; cursor: pointer; }
+.copy:hover { color: var(--accent); border-color: var(--accent); }
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--muted); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #2e9e5b; box-shadow: 0 0 0 3px color-mix(in srgb, #2e9e5b 22%, transparent); }
+
+/* Main record */
+main { display: grid; gap: 56px; min-width: 0; }
+.eyebrow { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 0 0 18px; display: flex; align-items: center; gap: 12px; }
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.intro { font-size: 1.22rem; line-height: 1.55; margin: 0; max-width: 62ch; text-wrap: pretty; }
+.intro em { font-style: normal; color: var(--accent); font-weight: 600; }
+
+.jobs { display: grid; gap: 36px; }
+.job { display: grid; gap: 8px; }
+.job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; }
+.job h3 { font-family: var(--display); font-weight: 700; font-size: 1.3rem; margin: 0; letter-spacing: -0.01em; }
+.job h3 span { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: 1rem; }
+.when { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.where { font-size: 0.88rem; color: var(--muted); margin-top: -4px; }
+.job ul { margin: 4px 0 0; padding-left: 1.1em; display: grid; gap: 6px; max-width: 68ch; }
+.job li::marker { color: var(--accent); }
+
+/* Featured: Microsoft */
+.featured { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+.rollout { display: flex; flex-wrap: wrap; gap: 0; margin: 6px 0 4px; font-family: var(--mono); font-size: 0.72rem; }
+.rollout span { padding: 4px 10px; background: var(--accent-soft); color: var(--accent); border-right: 1px solid var(--surface); }
+.rollout span:first-child { border-radius: 4px 0 0 4px; }
+.rollout span:last-child { border-radius: 0 4px 4px 0; border-right: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tag { font-family: var(--mono); font-size: 0.72rem; padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.two > * { min-width: 0; }
+.edu h3 { font-family: var(--display); font-weight: 700; font-size: 1.15rem; margin: 0; }
+.edu p { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
+.course { columns: 2; column-gap: 20px; list-style: none; padding: 0; margin: 14px 0 0; font-size: 0.92rem; }
+.course li { padding: 2px 0; break-inside: avoid; }
+
+.skills { display: grid; gap: 14px; }
+.skills dt { font-family: var(--mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.skills dd { margin: 2px 0 0; font-size: 0.95rem; }
+
+.honors { display: grid; gap: 18px; }
+.honor { display: grid; grid-template-columns: 56px 1fr; gap: 16px; }
+.honor .yr { font-family: var(--mono); font-size: 0.85rem; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.honor h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+.honor p { margin: 2px 0 0; color: var(--muted); font-size: 0.95rem; max-width: 64ch; }
+
+footer { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
+
+@media (max-width: 860px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 36px 56px; }
+  .rail { position: static; }
+  .name { font-size: 2.2rem; }
+  .two { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+@media (max-width: 420px) {
+  .featured { padding: 18px; }
+  .course { columns: 1; }
+  .intro { font-size: 1.1rem; }
+}
+/* Language toggle */
+:root:not([lang="pt"]) [data-l="pt"], :root[lang="pt"] [data-l="en"] { display: none !important; }
+.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; width: max-content; }
+.lang button { font: 500 0.75rem var(--mono); letter-spacing: 0.06em; padding: 6px 12px; border: 0; background: var(--surface); color: var(--muted); cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+.nav { display: grid; gap: 4px; font-size: 0.92rem; }
+.nav a { color: var(--muted); }
+.nav a:hover { color: var(--accent); }
+.path { list-style: none; margin: 8px 0 4px; padding: 0; display: grid; gap: 6px; }
+.path li { display: grid; grid-template-columns: 14px 1fr auto; gap: 10px; align-items: baseline; font-size: 0.92rem; }
+.path li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--accent); transform: translateY(1px); }
+.path li.now::before { background: var(--accent); }
+.path .when { font-size: 0.74rem; }
+section[id] { scroll-margin-top: 24px; }
+@media (max-width: 860px) { .nav { display: none; } }
+.likes { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.like { border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; background: var(--surface); display: grid; gap: 4px; align-content: start; min-width: 0; }
+.like .ico { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.like h3 { margin: 0; font-size: 1rem; font-weight: 600; }
+.like p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <aside class="rail">
+    <div>
+      <h1 class="name">Matheus Barbosa</h1>
+      <p class="role"><strong>Software Engineer</strong> <span data-l="en">at Microsoft, Azure Arc</span><span data-l="pt">na Microsoft, Azure Arc</span></p>
+      <div class="loc">Seattle, WA · USA</div>
+    </div>
+    <div class="lang" role="group" aria-label="Language / Idioma">
+      <button type="button" id="btn-en" data-set="en" aria-pressed="true">EN</button>
+      <button type="button" id="btn-pt" data-set="pt" aria-pressed="false">PT</button>
+    </div>
+    <ul class="contact">
+      <li><span class="k">Email</span><span class="v"><span id="email">matheus.cgh@gmail.com</span><button class="copy" id="copy-email" type="button"><span data-l="en">copy</span><span data-l="pt">copiar</span></button></span></li>
+      <li><span class="k">LinkedIn</span><span class="v"><a href="https://linkedin.com/in/matbarbosa" target="_blank" rel="noopener">in/matbarbosa</a></span></li>
+      <li><span class="k">GitHub</span><span class="v"><a href="https://github.com/barmath" target="_blank" rel="noopener">barmath</a></span></li>
+    </ul>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about"><span data-l="en">About</span><span data-l="pt">Sobre</span></a>
+      <a href="#experience"><span data-l="en">Experience</span><span data-l="pt">Experiência</span></a>
+      <a href="#education"><span data-l="en">Education &amp; skills</span><span data-l="pt">Formação e habilidades</span></a>
+      <a href="#beyond"><span data-l="en">Beyond work</span><span data-l="pt">Fora do trabalho</span></a>
+      <a href="#recognition"><span data-l="en">Recognition</span><span data-l="pt">Reconhecimentos</span></a>
+    </nav>
+    <div class="status"><span class="dot" aria-hidden="true"></span><span data-l="en">Open to conversations with recruiters</span><span data-l="pt">Aberto a conversas com recrutadores</span></div>
+  </aside>
+
+  <main>
+    <section id="about">
+      <h2 class="eyebrow"><span data-l="en">About</span><span data-l="pt">Sobre</span></h2>
+      <p class="intro" data-l="en">I build and operate cloud infrastructure at Microsoft on <em>Azure Arc</em>, the service that brings machines running anywhere under Azure management. I work across the stack, from the C agent that runs on customer machines to the C# services, deployment pipelines, monitoring and on-call that keep it reliable for thousands of customers. I grew up in São Paulo, Brazil, joined Microsoft in Vancouver, and moved to Seattle in 2025.</p>
+      <p class="intro" data-l="pt">Construo e opero infraestrutura de nuvem na Microsoft, no <em>Azure Arc</em>, o serviço que coloca máquinas rodando em qualquer lugar sob gerenciamento do Azure. Atuo em toda a stack: do agente em C que roda nas máquinas dos clientes aos serviços em C#, pipelines de deploy, monitoramento e on-call que mantêm tudo confiável para milhares de clientes. Cresci em São Paulo, entrei na Microsoft em Vancouver e me mudei para Seattle em 2025.</p>
+    </section>
+
+    <section id="experience">
+      <h2 class="eyebrow"><span data-l="en">Experience</span><span data-l="pt">Experiência</span></h2>
+      <div class="jobs">
+
+        <article class="job featured">
+          <div class="job-head">
+            <h3>Microsoft <span>· Software Engineer</span></h3>
+            <span class="when"><span data-l="en">Mar 2024 – Present</span><span data-l="pt">mar 2024 – atual</span></span>
+          </div>
+          <div class="where">Azure Arc / Machine Configuration</div>
+          <ul class="path" aria-label="Locations">
+            <li class="now"><span>Redmond, WA · USA</span><span class="when"><span data-l="en">Nov 2025 – Present</span><span data-l="pt">nov 2025 – atual</span></span></li>
+            <li><span>Vancouver, BC · Canada</span><span class="when"><span data-l="en">Mar 2024 – Oct 2025</span><span data-l="pt">mar 2024 – out 2025</span></span></li>
+          </ul>
+          <div class="rollout" aria-label="Release cycle">
+            <span>design</span><span>build</span><span>test</span><span>canary</span><span>production</span><span>monitor</span>
+          </div>
+          <ul data-l="en">
+            <li>Implemented large-scale changes across Azure Arc services impacting thousands of machines and customers, owning the full cycle from design through testing, canary rollout, and production monitoring. Built in C#, deployed via Azure DevOps, validated with KQL.</li>
+            <li>Developed and maintained the Arc agent written in C that runs on customer machines, shipping fixes and features that roll out safely across a large, heterogeneous fleet.</li>
+            <li>Built and maintained Azure DevOps CI/CD pipelines for staged, ring-based deployments, and owned monitors and alerts that detect regressions in production.</li>
+            <li>Served in the team's on-call rotation, triaging and mitigating live-site incidents and driving follow-up repair items.</li>
+            <li>Led security and compliance work across the team's two largest services, hardening rollout components and removing unused resources. Documented and shared best practices with an org of 100+ engineers for reuse.</li>
+            <li>Presented design reviews and technical deep-dives to the team and broader org on a biweekly cadence, sharing architecture decisions and lessons learned to drive feedback and knowledge transfer.</li>
+            <li>Started on the team in Vancouver, Canada, and relocated to the Redmond headquarters in November 2025.</li>
+          </ul>
+          <ul data-l="pt">
+            <li>Implementei mudanças em larga escala nos serviços do Azure Arc, impactando milhares de máquinas e clientes, sendo responsável pelo ciclo completo: design, testes, rollout canário e monitoramento em produção. Desenvolvido em C#, com deploy via Azure DevOps e validação com KQL.</li>
+            <li>Desenvolvi e mantive o agente do Arc escrito em C que roda nas máquinas dos clientes, entregando correções e funcionalidades com rollout seguro em uma frota grande e heterogênea.</li>
+            <li>Construí e mantive pipelines de CI/CD no Azure DevOps para deploys em etapas (rings), e fui responsável por monitores e alertas que detectam regressões em produção.</li>
+            <li>Participei da escala de on-call do time, fazendo triagem e mitigação de incidentes em produção e conduzindo os itens de correção posteriores.</li>
+            <li>Liderei o trabalho de segurança e compliance nos dois maiores serviços do time, reforçando componentes de rollout e removendo recursos não utilizados. Documentei e compartilhei boas práticas com uma organização de mais de 100 engenheiros.</li>
+            <li>Apresentei design reviews e deep-dives técnicos para o time e a organização a cada duas semanas, compartilhando decisões de arquitetura e lições aprendidas.</li>
+            <li>Comecei no time em Vancouver, Canadá, e me mudei para a sede em Redmond em novembro de 2025.</li>
+          </ul>
+          <div class="tags"><span class="tag">C</span><span class="tag">C#</span><span class="tag">Azure DevOps</span><span class="tag">KQL</span><span class="tag">Monitoring</span><span class="tag">On-call</span></div>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h3>Opus Software <span>· Software Engineer</span></h3>
+            <span class="when"><span data-l="en">Dec 2021 – Sep 2022</span><span data-l="pt">dez 2021 – set 2022</span></span>
+          </div>
+          <div class="where">São Paulo, Brazil</div>
+          <ul data-l="en">
+            <li>Created, designed, proposed, and implemented automations, optimizations, and simulations of the loan system. Reduced the process time of the loans from half a month to a few days.</li>
+            <li>Developed, implemented, and maintained unit and end-to-end testing plans and tests for products.</li>
+            <li>Worked directly with product design and the business client to gather requirements and clarify ambiguous technical details for the projects.</li>
+          </ul>
+          <ul data-l="pt">
+            <li>Criei, projetei, propus e implementei automações, otimizações e simulações do sistema de empréstimos. Reduzi o tempo de processamento dos empréstimos de meio mês para poucos dias.</li>
+            <li>Desenvolvi, implementei e mantive planos de teste e testes unitários e end-to-end para os produtos.</li>
+            <li>Trabalhei diretamente com o design de produto e o cliente para levantar requisitos e esclarecer detalhes técnicos ambíguos dos projetos.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h3>Carnegie Mellon University <span>· Software Engineer Intern</span></h3>
+            <span class="when"><span data-l="en">Jan 2020 – Nov 2020</span><span data-l="pt">jan 2020 – nov 2020</span></span>
+          </div>
+          <div class="where">Pittsburgh, PA · USA</div>
+          <ul data-l="en">
+            <li>Designed and implemented the architecture and framework for deploying and activating new machines on-demand for student virtual reality assignments. Served 100 students a semester.</li>
+            <li>Improved and optimized the framework to create and upload tutorials for non-technical staff. Deployment time decreased from 2 weeks to a few hours.</li>
+            <li>Refactored legacy framework of tutorial system to extract common modules used in production VR headsets and other school machines.</li>
+          </ul>
+          <ul data-l="pt">
+            <li>Projetei e implementei a arquitetura e o framework para provisionar e ativar novas máquinas sob demanda para trabalhos de realidade virtual dos alunos. Atendeu 100 alunos por semestre.</li>
+            <li>Melhorei e otimizei o framework de criação e upload de tutoriais para a equipe não técnica. O tempo de deploy caiu de 2 semanas para poucas horas.</li>
+            <li>Refatorei o framework legado do sistema de tutoriais para extrair módulos comuns usados nos headsets de VR em produção e em outras máquinas da universidade.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h3>Empiricus Research <span>· Business Intelligence Intern</span></h3>
+            <span class="when"><span data-l="en">Sep 2019 – Dec 2019</span><span data-l="pt">set 2019 – dez 2019</span></span>
+          </div>
+          <div class="where">São Paulo, Brazil</div>
+          <ul data-l="en">
+            <li>Used data analytics to help BI generate sales and develop new marketing strategies with dashboards and trend insights.</li>
+            <li>Scripted and automated dataset analysis of 300k+ users to notify and engage active users. Increased engagement by 5%.</li>
+            <li>Developed A/B studies for the Customer Service Department to create cold-call campaigns.</li>
+          </ul>
+          <ul data-l="pt">
+            <li>Usei análise de dados para ajudar o BI a gerar vendas e desenvolver novas estratégias de marketing com dashboards e análise de tendências.</li>
+            <li>Automatizei a análise de uma base de mais de 300 mil usuários para notificar e engajar usuários ativos. Aumentei o engajamento em 5%.</li>
+            <li>Desenvolvi estudos A/B para o setor de Atendimento ao Cliente criar campanhas de cold call.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h3>USPCodeLab <span data-l="en">· Member and Tutor (Volunteer)</span><span data-l="pt">· Membro e Tutor (Voluntário)</span></h3>
+            <span class="when"><span data-l="en">Apr 2019 – Dec 2019</span><span data-l="pt">abr 2019 – dez 2019</span></span>
+          </div>
+          <div class="where">São Paulo, Brazil</div>
+          <ul data-l="en">
+            <li>Taught and created classes on HTML, CSS, JavaScript to introduce web development to non-programmers.</li>
+            <li>Contacted and organized hiring events with companies like Microsoft and Facebook for more than 50 students per semester.</li>
+          </ul>
+          <ul data-l="pt">
+            <li>Criei e ministrei aulas de HTML, CSS e JavaScript para introduzir desenvolvimento web a quem não programava.</li>
+            <li>Contatei e organizei eventos de contratação com empresas como Microsoft e Facebook para mais de 50 alunos por semestre.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <div class="job-head">
+            <h3>B4A Group <span>· Software Engineer Intern</span></h3>
+            <span class="when"><span data-l="en">Dec 2018 – Apr 2019</span><span data-l="pt">dez 2018 – abr 2019</span></span>
+          </div>
+          <div class="where">São Paulo, Brazil</div>
+          <ul data-l="en">
+            <li>Added new supplier APIs to track 10k+ orders a day more efficiently.</li>
+            <li>Created and implemented hooks to update the orders database in response to business rules.</li>
+          </ul>
+          <ul data-l="pt">
+            <li>Integrei novas APIs de fornecedores para rastrear mais de 10 mil pedidos por dia com mais eficiência.</li>
+            <li>Criei e implementei hooks para atualizar o banco de pedidos de acordo com as regras de negócio.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="two" id="education">
+      <div class="edu">
+        <h2 class="eyebrow"><span data-l="en">Education</span><span data-l="pt">Formação</span></h2>
+        <h3><span data-l="en">University of São Paulo</span><span data-l="pt">Universidade de São Paulo (USP)</span></h3>
+        <p><span data-l="en">B.S. Information Systems</span><span data-l="pt">Bacharelado em Sistemas de Informação</span> · 2018 – 2023</p>
+        <ul class="course" data-l="en">
+          <li>Data Structures and Algorithms</li><li>Algorithm Analysis</li><li>Operating Systems</li>
+          <li>Database Systems</li><li>Object-Oriented Programming</li><li>Artificial Intelligence</li>
+        </ul>
+        <ul class="course" data-l="pt">
+          <li>Estruturas de Dados e Algoritmos</li><li>Análise de Algoritmos</li><li>Sistemas Operacionais</li>
+          <li>Bancos de Dados</li><li>Programação Orientada a Objetos</li><li>Inteligência Artificial</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="eyebrow"><span data-l="en">Skills</span><span data-l="pt">Habilidades</span></h2>
+        <dl class="skills">
+          <div><dt><span data-l="en">Programming</span><span data-l="pt">Programação</span></dt><dd>C, C#, Python, Java, JavaScript, SQL, KQL</dd></div>
+          <div><dt>Cloud &amp; Ops</dt><dd><span data-l="en">Azure, Azure Arc, Azure DevOps pipelines, monitoring and alerting, on-call</span><span data-l="pt">Azure, Azure Arc, pipelines no Azure DevOps, monitoramento e alertas, on-call</span></dd></div>
+          <div><dt><span data-l="en">Other tools</span><span data-l="pt">Outras ferramentas</span></dt><dd>Git, Unix, Node.js, Django, Unity3D, JupyterLab, HTML/CSS</dd></div>
+          <div><dt><span data-l="en">Languages</span><span data-l="pt">Idiomas</span></dt><dd><span data-l="en">Portuguese (native), English (fluent), Spanish (advanced), Japanese (learning)</span><span data-l="pt">Português (nativo), inglês (fluente), espanhol (avançado), japonês (estudando)</span></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="beyond">
+      <h2 class="eyebrow"><span data-l="en">Beyond work</span><span data-l="pt">Fora do trabalho</span></h2>
+      <div class="likes">
+        <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Running</span><span data-l="pt">Corrida</span></h3><p data-l="en">Regular runs around the Seattle area; it is where I think through problems.</p><p data-l="pt">Corridas regulares pela região de Seattle; é onde eu organizo as ideias.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Cycling</span><span data-l="pt">Bicicleta</span></h3><p data-l="en">Road rides around Lake Washington and the Eastside trails.</p><p data-l="pt">Pedais pela região do Lake Washington e pelas trilhas do Eastside.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Making</span><span data-l="pt">Mão na massa</span></span><h3><span data-l="en">DIY projects</span><span data-l="pt">Projetos DIY</span></h3><p data-l="en">Building and fixing things myself, a habit from my early years running 3D and CNC machines.</p><p data-l="pt">Construir e consertar as coisas por conta própria, hábito de quando eu operava máquinas 3D e CNC.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Making</span><span data-l="pt">Mão na massa</span></span><h3><span data-l="en">Drawing</span><span data-l="pt">Desenho</span></h3><p data-l="en">Sketching and technical drawing. I worked as a technical drafter before getting into software.</p><p data-l="pt">Esboços e desenho técnico. Trabalhei como desenhista técnico antes de entrar em software.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Learning</span><span data-l="pt">Aprendizado</span></span><h3><span data-l="en">Mechanical engineering</span><span data-l="pt">Engenharia mecânica</span></h3><p data-l="en">Studying how physical systems work, from mechanisms to materials, beyond the software world.</p><p data-l="pt">Estudando como sistemas físicos funcionam, de mecanismos a materiais, além do mundo do software.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Learning</span><span data-l="pt">Aprendizado</span></span><h3><span data-l="en">Aviation</span><span data-l="pt">Aviação</span></h3><p data-l="en">Fascinated by airplanes since I was a kid, and now training for my private pilot license.</p><p data-l="pt">Fascinado por aviões desde criança, e agora treinando para a licença de piloto privado.</p></div>
+      </div>
+    </section>
+
+    <section id="recognition">
+      <h2 class="eyebrow"><span data-l="en">Recognition</span><span data-l="pt">Reconhecimentos</span></h2>
+      <div class="honors">
+        <div class="honor">
+          <span class="yr">2021</span>
+          <div><h3>Symposium on Operating Systems Principles (SOSP)</h3>
+            <p data-l="en">Invited as a student committee member to test, evaluate, and verify the results of Operating Systems and Cloud Computing PhD and master's papers.</p>
+            <p data-l="pt">Convidado como membro estudante do comitê para testar, avaliar e verificar os resultados de artigos de doutorado e mestrado em Sistemas Operacionais e Computação em Nuvem.</p></div>
+        </div>
+        <div class="honor">
+          <span class="yr">2019</span>
+          <div><h3>Facebook Estação Hack</h3>
+            <p data-l="en">1st place for best project developed during a 4-week web development bootcamp.</p>
+            <p data-l="pt">1º lugar de melhor projeto desenvolvido durante um bootcamp de desenvolvimento web de 4 semanas.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2026 Matheus Barbosa · Seattle, WA</footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function setLang(l, save) {
+    root.lang = l;
+    document.getElementById('btn-en').setAttribute('aria-pressed', l === 'en');
+    document.getElementById('btn-pt').setAttribute('aria-pressed', l === 'pt');
+    if (save) { try { localStorage.setItem('lang', l); } catch (e) {} }
+  }
+  var initial = 'en';
+  if (location.hash === '#pt') initial = 'pt';
+  else { try { if (localStorage.getItem('lang') === 'pt') initial = 'pt'; } catch (e) {} }
+  setLang(initial, false);
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.set, true); });
+  });
+  window.addEventListener('hashchange', function () { if (location.hash === '#pt') setLang('pt', true); });
+
+  var btn = document.getElementById('copy-email');
+  btn.addEventListener('click', function () {
+    var text = document.getElementById('email').textContent;
+    var pt = root.lang === 'pt';
+    var orig = btn.innerHTML;
+    function done(msg) { btn.textContent = msg; setTimeout(function () { btn.innerHTML = orig; }, 1500); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done(pt ? 'selecionado' : 'selected');
+    }
+    try { navigator.clipboard.writeText(text).then(function () { done(pt ? 'copiado' : 'copied'); }, fallback); }
+    catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body>
+</html>
