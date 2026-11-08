@@ -144,6 +144,13 @@ section[id] { scroll-margin-top: 24px; }
 .like .ico { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
 .like h3 { margin: 0; font-size: 1rem; font-weight: 600; }
 .like p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.avatar { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; object-position: 50% 35%; border: 3px solid var(--surface); box-shadow: 0 0 0 1px var(--line); margin-bottom: 18px; display: block; }
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.gallery figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
+.gallery img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; display: block; background: var(--line); }
+.gallery figcaption { font-size: 0.88rem; line-height: 1.4; }
+.gallery figcaption small { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.02em; margin-top: 2px; }
+@media (max-width: 600px) { .gallery { grid-template-columns: minmax(0, 1fr); } .gallery img { aspect-ratio: 4 / 3; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
@@ -153,6 +160,7 @@ section[id] { scroll-margin-top: 24px; }
 <div class="wrap">
   <aside class="rail">
     <div>
+      <img class="avatar" src="images/profile.jpg" alt="Matheus Barbosa" width="112" height="112">
       <h1 class="name">Matheus Barbosa</h1>
       <p class="role"><strong>Software Engineer</strong> <span data-l="en">at Microsoft, Azure Arc</span><span data-l="pt">na Microsoft, Azure Arc</span></p>
       <div class="loc">Seattle, WA · USA</div>
@@ -340,10 +348,16 @@ section[id] { scroll-margin-top: 24px; }
       <div class="likes">
         <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Running</span><span data-l="pt">Corrida</span></h3><p data-l="en">Regular runs around the Seattle area; it is where I think through problems.</p><p data-l="pt">Corridas regulares pela região de Seattle; é onde eu organizo as ideias.</p></div>
         <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Cycling</span><span data-l="pt">Bicicleta</span></h3><p data-l="en">Road rides around Lake Washington and the Eastside trails.</p><p data-l="pt">Pedais pela região do Lake Washington e pelas trilhas do Eastside.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Hiking</span><span data-l="pt">Trilhas</span></h3><p data-l="en">From the Serra do Itapeti near my hometown to the mountains of the Pacific Northwest.</p><p data-l="pt">Da Serra do Itapeti, perto da minha cidade, às montanhas do Pacific Northwest.</p></div>
         <div class="like"><span class="ico"><span data-l="en">Making</span><span data-l="pt">Mão na massa</span></span><h3><span data-l="en">DIY projects</span><span data-l="pt">Projetos DIY</span></h3><p data-l="en">Building and fixing things myself, a habit from my early years running 3D and CNC machines.</p><p data-l="pt">Construir e consertar as coisas por conta própria, hábito de quando eu operava máquinas 3D e CNC.</p></div>
         <div class="like"><span class="ico"><span data-l="en">Making</span><span data-l="pt">Mão na massa</span></span><h3><span data-l="en">Drawing</span><span data-l="pt">Desenho</span></h3><p data-l="en">Sketching and technical drawing. I worked as a technical drafter before getting into software.</p><p data-l="pt">Esboços e desenho técnico. Trabalhei como desenhista técnico antes de entrar em software.</p></div>
         <div class="like"><span class="ico"><span data-l="en">Learning</span><span data-l="pt">Aprendizado</span></span><h3><span data-l="en">Mechanical engineering</span><span data-l="pt">Engenharia mecânica</span></h3><p data-l="en">Studying how physical systems work, from mechanisms to materials, beyond the software world.</p><p data-l="pt">Estudando como sistemas físicos funcionam, de mecanismos a materiais, além do mundo do software.</p></div>
         <div class="like"><span class="ico"><span data-l="en">Learning</span><span data-l="pt">Aprendizado</span></span><h3><span data-l="en">Aviation</span><span data-l="pt">Aviação</span></h3><p data-l="en">Fascinated by airplanes since I was a kid, and now training for my private pilot license.</p><p data-l="pt">Fascinado por aviões desde criança, e agora treinando para a licença de piloto privado.</p></div>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/pedra-do-lagarto.jpg" alt="Matheus at Pedra do Lagarto, with forest behind" loading="lazy"><figcaption>Pedra do Lagarto<small>Serra do Itapeti · Mogi das Cruzes, <span data-l="en">Brazil</span><span data-l="pt">Brasil</span></small></figcaption></figure>
+        <figure><img src="images/mount-seymour.jpg" alt="Matheus on a snowy summit at Mount Seymour" loading="lazy"><figcaption>Mount Seymour<small>Vancouver, BC · <span data-l="en">Canada</span><span data-l="pt">Canadá</span></small></figcaption></figure>
+        <figure><img src="images/lions-gate.jpg" alt="Cycling across the Lions Gate Bridge at sunset" loading="lazy"><figcaption>Lions Gate Bridge<small>Vancouver, BC · <span data-l="en">Canada</span><span data-l="pt">Canadá</span></small></figcaption></figure>
       </div>
     </section>
 
