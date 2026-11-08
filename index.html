@@ -151,6 +151,12 @@ section[id] { scroll-margin-top: 24px; }
 .gallery figcaption { font-size: 0.88rem; line-height: 1.4; }
 .gallery figcaption small { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.02em; margin-top: 2px; }
 @media (max-width: 600px) { .gallery { grid-template-columns: minmax(0, 1fr); } .gallery img { aspect-ratio: 4 / 3; } }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: -16px; }
+.tabs button { font: 600 0.95rem var(--body); color: var(--muted); background: none; border: 0; border-bottom: 2px solid transparent; padding: 8px 14px 10px; margin-bottom: -1px; cursor: pointer; }
+.tabs button:hover { color: var(--fg); }
+.tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.panel { display: grid; gap: 56px; min-width: 0; }
+.nav-personal { margin-top: 6px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
@@ -178,13 +184,18 @@ section[id] { scroll-margin-top: 24px; }
       <a href="#about"><span data-l="en">About</span><span data-l="pt">Sobre</span></a>
       <a href="#experience"><span data-l="en">Experience</span><span data-l="pt">Experiência</span></a>
       <a href="#education"><span data-l="en">Education &amp; skills</span><span data-l="pt">Formação e habilidades</span></a>
-      <a href="#beyond"><span data-l="en">Beyond work</span><span data-l="pt">Fora do trabalho</span></a>
       <a href="#recognition"><span data-l="en">Recognition</span><span data-l="pt">Reconhecimentos</span></a>
+      <a href="#personal" class="nav-personal"><span data-l="en">Personal →</span><span data-l="pt">Pessoal →</span></a>
     </nav>
     <div class="status"><span class="dot" aria-hidden="true"></span><span data-l="en">Open to conversations with recruiters</span><span data-l="pt">Aberto a conversas com recrutadores</span></div>
   </aside>
 
   <main>
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button type="button" role="tab" id="tab-work" data-tab-btn="work" aria-selected="true" aria-controls="panel-work"><span data-l="en">Professional</span><span data-l="pt">Profissional</span></button>
+      <button type="button" role="tab" id="tab-personal" data-tab-btn="personal" aria-selected="false" aria-controls="panel-personal"><span data-l="en">Personal</span><span data-l="pt">Pessoal</span></button>
+    </div>
+    <div class="panel" id="panel-work" role="tabpanel" aria-labelledby="tab-work">
     <section id="about">
       <h2 class="eyebrow"><span data-l="en">About</span><span data-l="pt">Sobre</span></h2>
       <p class="intro" data-l="en">I build and operate cloud infrastructure at Microsoft on <em>Azure Arc</em>, the service that brings machines running anywhere under Azure management. I work across the stack, from the C agent that runs on customer machines to the C# services, deployment pipelines, monitoring and on-call that keep it reliable for thousands of customers. I grew up in São Paulo, Brazil, joined Microsoft in Vancouver, and moved to Seattle in 2025.</p>
@@ -343,24 +354,6 @@ section[id] { scroll-margin-top: 24px; }
       </div>
     </section>
 
-    <section id="beyond">
-      <h2 class="eyebrow"><span data-l="en">Beyond work</span><span data-l="pt">Fora do trabalho</span></h2>
-      <div class="likes">
-        <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Running</span><span data-l="pt">Corrida</span></h3><p data-l="en">Regular runs around the Seattle area; it is where I think through problems.</p><p data-l="pt">Corridas regulares pela região de Seattle; é onde eu organizo as ideias.</p></div>
-        <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Cycling</span><span data-l="pt">Bicicleta</span></h3><p data-l="en">Road rides around Lake Washington and the Eastside trails.</p><p data-l="pt">Pedais pela região do Lake Washington e pelas trilhas do Eastside.</p></div>
-        <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Hiking</span><span data-l="pt">Trilhas</span></h3><p data-l="en">From the Serra do Itapeti near my hometown to the mountains of the Pacific Northwest.</p><p data-l="pt">Da Serra do Itapeti, perto da minha cidade, às montanhas do Pacific Northwest.</p></div>
-        <div class="like"><span class="ico"><span data-l="en">Making</span><span data-l="pt">Mão na massa</span></span><h3><span data-l="en">DIY projects</span><span data-l="pt">Projetos DIY</span></h3><p data-l="en">Building and fixing things myself, a habit from my early years running 3D and CNC machines.</p><p data-l="pt">Construir e consertar as coisas por conta própria, hábito de quando eu operava máquinas 3D e CNC.</p></div>
-        <div class="like"><span class="ico"><span data-l="en">Making</span><span data-l="pt">Mão na massa</span></span><h3><span data-l="en">Drawing</span><span data-l="pt">Desenho</span></h3><p data-l="en">Sketching and technical drawing. I worked as a technical drafter before getting into software.</p><p data-l="pt">Esboços e desenho técnico. Trabalhei como desenhista técnico antes de entrar em software.</p></div>
-        <div class="like"><span class="ico"><span data-l="en">Learning</span><span data-l="pt">Aprendizado</span></span><h3><span data-l="en">Mechanical engineering</span><span data-l="pt">Engenharia mecânica</span></h3><p data-l="en">Studying how physical systems work, from mechanisms to materials, beyond the software world.</p><p data-l="pt">Estudando como sistemas físicos funcionam, de mecanismos a materiais, além do mundo do software.</p></div>
-        <div class="like"><span class="ico"><span data-l="en">Learning</span><span data-l="pt">Aprendizado</span></span><h3><span data-l="en">Aviation</span><span data-l="pt">Aviação</span></h3><p data-l="en">Fascinated by airplanes since I was a kid, and now training for my private pilot license.</p><p data-l="pt">Fascinado por aviões desde criança, e agora treinando para a licença de piloto privado.</p></div>
-      </div>
-      <div class="gallery">
-        <figure><img src="images/pedra-do-lagarto.jpg" alt="Matheus at Pedra do Lagarto, with forest behind" loading="lazy"><figcaption>Pedra do Lagarto<small>Serra do Itapeti · Mogi das Cruzes, <span data-l="en">Brazil</span><span data-l="pt">Brasil</span></small></figcaption></figure>
-        <figure><img src="images/mount-seymour.jpg" alt="Matheus on a snowy summit at Mount Seymour" loading="lazy"><figcaption>Mount Seymour<small>Vancouver, BC · <span data-l="en">Canada</span><span data-l="pt">Canadá</span></small></figcaption></figure>
-        <figure><img src="images/lions-gate.jpg" alt="Cycling across the Lions Gate Bridge at sunset" loading="lazy"><figcaption>Lions Gate Bridge<small>Vancouver, BC · <span data-l="en">Canada</span><span data-l="pt">Canadá</span></small></figcaption></figure>
-      </div>
-    </section>
-
     <section id="recognition">
       <h2 class="eyebrow"><span data-l="en">Recognition</span><span data-l="pt">Reconhecimentos</span></h2>
       <div class="honors">
@@ -379,6 +372,28 @@ section[id] { scroll-margin-top: 24px; }
       </div>
     </section>
 
+    </div>
+    <div class="panel" id="panel-personal" role="tabpanel" aria-labelledby="tab-personal" hidden>
+    <section id="beyond">
+      <h2 class="eyebrow"><span data-l="en">Things I enjoy</span><span data-l="pt">O que eu gosto de fazer</span></h2>
+      <div class="likes">
+        <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Running</span><span data-l="pt">Corrida</span></h3><p data-l="en">Regular runs around the Seattle area; it is where I think through problems.</p><p data-l="pt">Corridas regulares pela região de Seattle; é onde eu organizo as ideias.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Cycling</span><span data-l="pt">Bicicleta</span></h3><p data-l="en">Road rides around Lake Washington and the Eastside trails.</p><p data-l="pt">Pedais pela região do Lake Washington e pelas trilhas do Eastside.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Sports</span><span data-l="pt">Esporte</span></span><h3><span data-l="en">Hiking</span><span data-l="pt">Trilhas</span></h3><p data-l="en">From the Serra do Itapeti near my hometown to the mountains of the Pacific Northwest.</p><p data-l="pt">Da Serra do Itapeti, perto da minha cidade, às montanhas do Pacific Northwest.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Making</span><span data-l="pt">Mão na massa</span></span><h3><span data-l="en">DIY projects</span><span data-l="pt">Projetos DIY</span></h3><p data-l="en">Building and fixing things myself, a habit from my early years running 3D and CNC machines.</p><p data-l="pt">Construir e consertar as coisas por conta própria, hábito de quando eu operava máquinas 3D e CNC.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Making</span><span data-l="pt">Mão na massa</span></span><h3><span data-l="en">Drawing</span><span data-l="pt">Desenho</span></h3><p data-l="en">Sketching and technical drawing. I worked as a technical drafter before getting into software.</p><p data-l="pt">Esboços e desenho técnico. Trabalhei como desenhista técnico antes de entrar em software.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Learning</span><span data-l="pt">Aprendizado</span></span><h3><span data-l="en">Mechanical engineering</span><span data-l="pt">Engenharia mecânica</span></h3><p data-l="en">Studying how physical systems work, from mechanisms to materials, beyond the software world.</p><p data-l="pt">Estudando como sistemas físicos funcionam, de mecanismos a materiais, além do mundo do software.</p></div>
+        <div class="like"><span class="ico"><span data-l="en">Learning</span><span data-l="pt">Aprendizado</span></span><h3><span data-l="en">Aviation</span><span data-l="pt">Aviação</span></h3><p data-l="en">Fascinated by airplanes since I was a kid, and now training for my private pilot license.</p><p data-l="pt">Fascinado por aviões desde criança, e agora treinando para a licença de piloto privado.</p></div>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/pedra-do-lagarto.jpg" alt="Matheus at Pedra do Lagarto, with forest behind" loading="lazy"><figcaption>Pedra do Lagarto<small>Serra do Itapeti · Mogi das Cruzes, <span data-l="en">Brazil</span><span data-l="pt">Brasil</span></small></figcaption></figure>
+        <figure><img src="images/mount-seymour.jpg" alt="Matheus on a snowy summit at Mount Seymour" loading="lazy"><figcaption>Mount Seymour<small>Vancouver, BC · <span data-l="en">Canada</span><span data-l="pt">Canadá</span></small></figcaption></figure>
+        <figure><img src="images/lions-gate.jpg" alt="Cycling across the Lions Gate Bridge at sunset" loading="lazy"><figcaption>Lions Gate Bridge<small>Vancouver, BC · <span data-l="en">Canada</span><span data-l="pt">Canadá</span></small></figcaption></figure>
+      </div>
+    </section>
+
+    </div>
+
     <footer>© 2026 Matheus Barbosa · Seattle, WA</footer>
   </main>
 </div>
@@ -392,14 +407,34 @@ section[id] { scroll-margin-top: 24px; }
     document.getElementById('btn-pt').setAttribute('aria-pressed', l === 'pt');
     if (save) { try { localStorage.setItem('lang', l); } catch (e) {} }
   }
+  function setTab(t) {
+    document.getElementById('panel-work').hidden = t !== 'work';
+    document.getElementById('panel-personal').hidden = t !== 'personal';
+    document.getElementById('tab-work').setAttribute('aria-selected', t === 'work');
+    document.getElementById('tab-personal').setAttribute('aria-selected', t === 'personal');
+  }
+  function readHash() {
+    var h = location.hash.replace('#', '');
+    if (h === 'pt' || h === 'pt-personal') setLang('pt', true);
+    if (h === 'personal' || h === 'pt-personal') { setTab('personal'); window.scrollTo(0, 0); }
+    else if (['about', 'experience', 'education', 'recognition', 'pt', ''].indexOf(h) !== -1) setTab('work');
+  }
   var initial = 'en';
-  if (location.hash === '#pt') initial = 'pt';
-  else { try { if (localStorage.getItem('lang') === 'pt') initial = 'pt'; } catch (e) {} }
+  try { if (localStorage.getItem('lang') === 'pt') initial = 'pt'; } catch (e) {}
   setLang(initial, false);
+  setTab('work');
+  readHash();
+  document.querySelectorAll('[data-tab-btn]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = b.dataset.tabBtn;
+      setTab(t);
+      try { history.replaceState(null, '', t === 'personal' ? '#personal' : location.pathname + location.search); } catch (e) {}
+    });
+  });
   document.querySelectorAll('.lang button').forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.dataset.set, true); });
   });
-  window.addEventListener('hashchange', function () { if (location.hash === '#pt') setLang('pt', true); });
+  window.addEventListener('hashchange', readHash);
 
   var btn = document.getElementById('copy-email');
   btn.addEventListener('click', function () {
