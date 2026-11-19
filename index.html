@@ -157,6 +157,14 @@ section[id] { scroll-margin-top: 24px; }
 .tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
 .panel { display: grid; gap: 56px; min-width: 0; }
 .nav-personal { margin-top: 6px; }
+.talk { display: grid; gap: 10px; }
+.talk h3 { font-family: var(--display); font-weight: 700; font-size: 1.2rem; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+.talk .meta { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+.talk p { margin: 0; max-width: 64ch; }
+.talk-topics { display: flex; flex-wrap: wrap; gap: 6px; }
+.btn-dl { display: inline-flex; align-items: center; gap: 8px; width: max-content; max-width: 100%; font-weight: 600; font-size: 0.92rem; padding: 9px 16px; border-radius: 6px; background: var(--accent); color: var(--bg); margin-top: 4px; }
+.btn-dl:hover { text-decoration: none; filter: brightness(1.08); }
+.btn-dl small { font-family: var(--mono); font-weight: 400; font-size: 0.72rem; opacity: 0.85; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
@@ -184,6 +192,7 @@ section[id] { scroll-margin-top: 24px; }
       <a href="#about"><span data-l="en">About</span><span data-l="pt">Sobre</span></a>
       <a href="#experience"><span data-l="en">Experience</span><span data-l="pt">Experiência</span></a>
       <a href="#education"><span data-l="en">Education &amp; skills</span><span data-l="pt">Formação e habilidades</span></a>
+      <a href="#talks"><span data-l="en">Talks</span><span data-l="pt">Palestras</span></a>
       <a href="#recognition"><span data-l="en">Recognition</span><span data-l="pt">Reconhecimentos</span></a>
       <a href="#personal" class="nav-personal"><span data-l="en">Personal →</span><span data-l="pt">Pessoal →</span></a>
     </nav>
@@ -353,6 +362,23 @@ section[id] { scroll-margin-top: 24px; }
       </div>
     </section>
 
+    <section id="talks">
+      <h2 class="eyebrow"><span data-l="en">Talks</span><span data-l="pt">Palestras</span></h2>
+      <article class="talk featured">
+        <h3>Carreira em TI: Brasil, Estados Unidos e oportunidades internacionais</h3>
+        <div class="meta">Centro Universitário Braz Cubas · <span data-l="en">Online · Nov 18, 2026</span><span data-l="pt">Online · 18 de novembro de 2026</span></div>
+        <p data-l="en">A talk for IT students, in Portuguese, about building a tech career from Brazil: my path from Suzano to USP and Microsoft, what the work looks like on Azure Arc, routes to working abroad, and how coding interviews work and how to prepare for them.</p>
+        <p data-l="pt">Palestra para estudantes de TI sobre construir uma carreira em tecnologia a partir do Brasil: minha trajetória de Suzano à USP e à Microsoft, como é o trabalho no Azure Arc, caminhos para trabalhar fora, e como funcionam as entrevistas de código e como se preparar.</p>
+        <div class="talk-topics">
+          <span class="tag"><span data-l="en">Brazil</span><span data-l="pt">Brasil</span></span>
+          <span class="tag"><span data-l="en">United States</span><span data-l="pt">Estados Unidos</span></span>
+          <span class="tag"><span data-l="en">Working abroad</span><span data-l="pt">Carreira internacional</span></span>
+          <span class="tag"><span data-l="en">Coding interviews</span><span data-l="pt">Entrevistas de código</span></span>
+        </div>
+        <a class="btn-dl" href="talks/carreira-em-ti-braz-cubas-2026.pdf" target="_blank" rel="noopener"><span data-l="en">Download slides</span><span data-l="pt">Baixar apresentação</span> <small>PDF · 18 slides</small></a>
+      </article>
+    </section>
+
     <section id="recognition">
       <h2 class="eyebrow"><span data-l="en">Recognition</span><span data-l="pt">Reconhecimentos</span></h2>
       <div class="honors">
@@ -393,7 +419,7 @@ section[id] { scroll-margin-top: 24px; }
 
     </div>
 
-    <footer><span data-l="en">Last updated: <time datetime="2026-11-07">Nov 7, 2026</time></span><span data-l="pt">Última atualização: <time datetime="2026-11-07">7 de novembro de 2026</time></span> · © 2026 Matheus Barbosa · Seattle, WA</footer>
+    <footer><span data-l="en">Last updated: <time datetime="2026-11-19">Nov 19, 2026</time></span><span data-l="pt">Última atualização: <time datetime="2026-11-19">19 de novembro de 2026</time></span> · © 2026 Matheus Barbosa · Seattle, WA</footer>
   </main>
 </div>
 
@@ -416,7 +442,7 @@ section[id] { scroll-margin-top: 24px; }
     var h = location.hash.replace('#', '');
     if (h === 'pt' || h === 'pt-personal') setLang('pt', true);
     if (h === 'personal' || h === 'pt-personal') { setTab('personal'); window.scrollTo(0, 0); }
-    else if (['about', 'experience', 'education', 'recognition', 'pt', ''].indexOf(h) !== -1) setTab('work');
+    else if (['about', 'experience', 'education', 'talks', 'recognition', 'pt', ''].indexOf(h) !== -1) setTab('work');
   }
   var initial = 'en';
   try { if (localStorage.getItem('lang') === 'pt') initial = 'pt'; } catch (e) {}
